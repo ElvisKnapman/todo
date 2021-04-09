@@ -1,0 +1,71 @@
+.todo-item {
+  position: relative;
+  padding: 1.7rem;
+  border-radius: 4px;
+  border: 1px solid black;
+
+  background-color: rgba(33, 128, 4, 0.815);
+  color: white;
+
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .todo-status-container {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .trash-icon,
+    .checkmark-icon {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+    }
+  }
+
+  .todo-title {
+    font-size: 2rem;
+    width: 80%;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 2.2rem;
+  }
+
+  .timestamp {
+    position: relative;
+    background: rgba(9, 209, 19, 0.369);
+    padding: 1rem;
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-size: 1.3rem;
+
+    &-clock {
+      position: absolute;
+      bottom: -0.5rem;
+      left: -0.7rem;
+      font-size: 1.5rem;
+    }
+  }
+}
+.urgent {
+  position: absolute;
+  width: 2.6rem;
+  height: 2.6rem;
+  top: -1.3rem;
+  right: -1.2rem;
+  color: crimson;
+  background-color: white;
+  border-radius: 50%;
+  text-align: center;
+  padding: 0.3rem 0.4rem;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.3);
+
+  &-icon {
+    font-size: 1.7em;
+  }
+}
