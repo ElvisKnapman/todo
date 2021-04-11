@@ -15,16 +15,16 @@ const TodoItem = (props) => {
       <div className="flex-container">
         <div className="todo-title">{todo.title}</div>
         <div className="todo-status-container">
-          <div className="todo-completed-toggle">
+          <div className="todo-status-icon">
             <BsCheckCircle className="checkmark-icon" />
           </div>
-          <div className="todo-delete">
+          <div className="todo-status-icon">
             <BsTrashFill className="trash-icon" />
           </div>
         </div>
 
         {todo.urgent ? (
-          <div className="urgent">
+          <div className="urgent" title="Urgent">
             <BsExclamationTriangleFill className="urgent-icon" />
           </div>
         ) : null}
