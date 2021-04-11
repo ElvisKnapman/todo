@@ -22,13 +22,19 @@
     .trash-icon,
     .checkmark-icon {
       font-size: 1.8rem;
-      margin-right: 1rem;
+    }
+
+    .todo-status-icon:not(:last-child) {
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
     }
   }
 
   .todo-title {
     font-size: 2rem;
-    width: 80%;
+    max-width: 80%;
+    overflow-wrap: break-word;
   }
 
   &:not(:last-child) {
