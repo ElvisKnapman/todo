@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import { StateContext } from '../../StateContext';
+
+import { ACTION_TYPES } from '../../actionTypes/actionTypes';
 
 import './TodoInfoBar.styles.scss';
+import { BsFolderPlus } from 'react-icons/bs';
 
 const TodoInfoBar = (props) => {
-  const { setTodos } = props;
+  console.log('props in the info bar', props);
+
+  const { dispatch } = useContext(StateContext);
 
   const [todoText, setTodoText] = useState('');
 
@@ -20,15 +27,16 @@ const TodoInfoBar = (props) => {
     }
 
     // add new todo object to the front of the list
-    setTodos((prevState) => [
-      {
+    dispatch({
+      type: ACTION_TYPES.ADD_TODO,
+      payload: {
         title: todoText,
         urgent: false,
         completed: false,
         created: new Date(Date.now()),
       },
-      ...prevState,
-    ]);
+    });
+    console.log('new todo dispatched');
     // clear input field
     clearTodoField();
   };
