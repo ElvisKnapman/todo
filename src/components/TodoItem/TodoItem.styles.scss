@@ -3,9 +3,32 @@
   padding: 1.7rem;
   border-radius: 4px;
   border: 1px solid black;
+  transition: all 0.3s;
 
   background-color: rgba(33, 128, 4, 0.815);
   color: white;
+
+  .completed-banner {
+    position: absolute;
+    top: -1rem;
+    right: 2rem;
+    background-color: white;
+    padding: 0.3rem 0.5rem;
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.2);
+  }
+
+  &.deleted {
+    animation-name: deleted;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    backface-visibility: hidden;
+  }
 
   .flex-container {
     display: flex;
@@ -19,9 +42,9 @@
     justify-content: center;
     align-items: center;
 
-    .trash-icon,
-    .checkmark-icon {
+    .todo-status-icon {
       font-size: 1.8rem;
+      cursor: pointer;
     }
 
     .todo-status-icon:not(:last-child) {
@@ -35,6 +58,10 @@
     font-size: 2rem;
     max-width: 80%;
     overflow-wrap: break-word;
+
+    &.title-completed {
+      text-decoration: line-through;
+    }
   }
 
   &:not(:last-child) {
@@ -73,5 +100,20 @@
 
   &-icon {
     font-size: 1.7em;
+  }
+}
+
+@keyframes deleted {
+  0% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
   }
 }
