@@ -5,17 +5,12 @@ import { StateContext } from '../../StateContext';
 import { ACTION_TYPES } from '../../actionTypes/actionTypes';
 
 import './TodoInfoBar.styles.scss';
-import { BsFolderPlus } from 'react-icons/bs';
 
 const TodoInfoBar = (props) => {
-  console.log('props in the info bar', props);
-
   const { dispatch } = useContext(StateContext);
 
   const [todoText, setTodoText] = useState('');
   const [todoUrgent, setTodoUrgent] = useState(false);
-
-  console.log('is the todo urgent', todoUrgent);
 
   const resetForm = () => {
     setTodoText('');
@@ -40,11 +35,10 @@ const TodoInfoBar = (props) => {
         created: new Date(Date.now()),
       },
     });
-    console.log('new todo dispatched');
     // clear input field and reset urgent checkbox
     resetForm();
   };
-  console.log('todo state text:', todoText);
+
   return (
     <div>
       <div className="todo-info-bar">

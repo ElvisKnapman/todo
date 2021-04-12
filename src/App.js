@@ -16,7 +16,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  console.log('reducer reached: here is the action', action);
   switch (action.type) {
     case ACTION_TYPES.ADD_TODO:
       return {
@@ -27,10 +26,6 @@ const reducer = (state, action) => {
       };
 
     case ACTION_TYPES.TOGGLE_COMPLETE:
-      console.log(
-        'dispatched confirmed for toggle complete, mark this id as completed:',
-        action.payload
-      );
       return {
         ...state,
         todos: state.todos.map((todo) => {
@@ -47,7 +42,6 @@ const reducer = (state, action) => {
       };
 
     case ACTION_TYPES.DELETE_TODO:
-      console.log('the dispatch was triggered to delete the todo');
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
@@ -62,8 +56,6 @@ const reducer = (state, action) => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  console.log('reducer state', state);
 
   return (
     <div className="App">

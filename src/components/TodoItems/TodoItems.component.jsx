@@ -6,7 +6,6 @@ import './TodoItems.styles.scss';
 
 const TodoItems = (props) => {
   const { todos } = props;
-  console.log('todo items (in todos component):', todos);
   return (
     <div className="todo-items">
       {/* if there are todos, display them... otherwise display message saying there are no todos to display */}
