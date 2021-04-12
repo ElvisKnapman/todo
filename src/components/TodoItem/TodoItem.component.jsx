@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { StateContext } from '../../StateContext';
 
@@ -17,26 +17,49 @@ const TodoItem = (props) => {
   const { dispatch } = useContext(StateContext);
   const { todo } = props;
 
-  useEffect(() => {
-    console.log('new todo component mounted');
-  }, []);
+  const [deleted, setDeleted] = useState(false);
+
   return (
-    <div className="todo-item">
+    // when the animation ends for removing this element, dispatch the delete
+    <div
+      className={`todo-item ${deleted ? 'deleted' : ''}`}
+      onAnimationEnd={() => {
+        dispatch({ type: ACTION_TYPES.DELETE_TODO, payload: todo.id });
+      }}>
+      {todo.completed ? (
+        <div className="completed-banner">Completed!</div>
+      ) : null}
       <div className="flex-container">
-        <div className="todo-title">{todo.title}</div>
+        <div
+          className={`todo-title ${todo.completed ? 'title-completed' : ''}`}>
+          {todo.title}
+        </div>
         <div className="todo-status-container">
           <div className="todo-status-icon">
             <BsCheckCircle
               className="checkmark-icon"
-              onClick={() => console.log('clicked to toggle complete')}
+              title="Toggle todo completed status"
+              onAnimationEnd={() =>
+                dispatch({
+                  type: ACTION_TYPES.TOGGLE_COMPLETE,
+                  payload: todo.id,
+                })
+              }
+              onClick={() =>
+                dispatch({
+                  type: ACTION_TYPES.TOGGLE_COMPLETE,
+                  payload: todo.id,
+                })
+              }
             />
           </div>
           <div className="todo-status-icon">
             <BsTrashFill
               className="trash-icon"
-              onClick={() =>
-                dispatch({ type: ACTION_TYPES.DELETE_TODO, payload: todo.id })
-              }
+              title="Delete this todo"
+              onClick={() => {
+                setDeleted(true);
+              }}
             />
           </div>
         </div>
