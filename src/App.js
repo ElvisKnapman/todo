@@ -26,6 +26,26 @@ const reducer = (state, action) => {
         todos: [...state.todos, { id: state.uid, ...action.payload }],
       };
 
+    case ACTION_TYPES.TOGGLE_COMPLETE:
+      console.log(
+        'dispatched confirmed for toggle complete, mark this id as completed:',
+        action.payload
+      );
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          // if todo is the todo that was clicked on, mark as complete
+          if (todo.id === action.payload) {
+            return {
+              ...todo,
+              completed: !todo.completed,
+            };
+          }
+          // otherwise just return the todo
+          return todo;
+        }),
+      };
+
     case ACTION_TYPES.DELETE_TODO:
       console.log('the dispatch was triggered to delete the todo');
       return {
