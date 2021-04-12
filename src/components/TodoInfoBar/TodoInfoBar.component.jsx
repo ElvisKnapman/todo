@@ -13,9 +13,13 @@ const TodoInfoBar = (props) => {
   const { dispatch } = useContext(StateContext);
 
   const [todoText, setTodoText] = useState('');
+  const [todoUrgent, setTodoUrgent] = useState(false);
 
-  const clearTodoField = () => {
+  console.log('is the todo urgent', todoUrgent);
+
+  const resetForm = () => {
     setTodoText('');
+    setTodoUrgent(false);
   };
 
   const handleSubmit = (e) => {
@@ -31,14 +35,14 @@ const TodoInfoBar = (props) => {
       type: ACTION_TYPES.ADD_TODO,
       payload: {
         title: todoText,
-        urgent: false,
+        urgent: todoUrgent,
         completed: false,
         created: new Date(Date.now()),
       },
     });
     console.log('new todo dispatched');
-    // clear input field
-    clearTodoField();
+    // clear input field and reset urgent checkbox
+    resetForm();
   };
   console.log('todo state text:', todoText);
   return (
@@ -55,6 +59,22 @@ const TodoInfoBar = (props) => {
             value={todoText}
             placeholder="What do you need to do?"
           />
+          <div className="add-todo-group">
+            <button className="add-todo-btn">Add Todo</button>
+            <div className="urgent-checkbox-group">
+              <label
+                htmlFor="urgent-checkbox"
+                className="urgent-checkbox-label">
+                Mark as Urgent?
+              </label>
+              <input
+                type="checkbox"
+                id="urgent-checkbox"
+                onChange={() => setTodoUrgent((prevState) => !prevState)}
+                checked={todoUrgent}
+              />
+            </div>
+          </div>
         </form>
       </div>
     </div>
