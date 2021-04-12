@@ -3,8 +3,8 @@
   padding: 1.7rem;
   border-radius: 4px;
   border: 1px solid black;
+  user-select: none;
   transition: all 0.3s;
-
   background-color: rgba(33, 128, 4, 0.815);
   color: white;
 
@@ -76,6 +76,7 @@
     margin-top: 1rem;
     border-radius: 4px;
     font-size: 1.3rem;
+    user-select: none;
 
     &-clock {
       position: absolute;
