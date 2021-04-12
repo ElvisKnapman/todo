@@ -22,4 +22,42 @@
     box-shadow: 3px 6px 16px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(33, 128, 4, 0.815);
   }
+
+  .add-todo-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+
+    .add-todo-btn {
+      margin-bottom: 2rem;
+      padding: 1rem 1.3rem;
+      color: white;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      background-color: rgba(33, 128, 4, 0.815);
+      border: none;
+      outline: none;
+      max-width: 20rem;
+      border-radius: 4px;
+    }
+  }
+
+  .urgent-checkbox-group {
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .urgent-checkbox-label {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+
+    .urgent-checkbox {
+      padding: 3rem;
+    }
+  }
 }
